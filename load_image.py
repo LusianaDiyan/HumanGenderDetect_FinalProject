@@ -1,4 +1,34 @@
 import cv2
+import dlib
+
+detektor = dlib.get_frontal_face_detector ()
+
+img = cv2.imread ("trial.jpg")
+
+# Mengubah gambar menjadi skala abu-abu.
+grey = cv2.cvtColor (img, cv2.COLOR_BGR2GRAY)
+
+# Kami menggunakan fungsi detektor untuk mendeteksi wajah.
+wajah = detektor (grey)
+
+for face in wajah:
+    x1 = face.left ()
+    y1 = face.top ()
+    x2 = face.right ()
+    y2 = face.bottom ()
+
+    # Kami menggambar persegi panjang
+    cv2. rectangle (img, (x1, y1), (x2, y2), (0,255,0), 4)
+
+#show gambar
+cv2.imshow ("Wajah", img)
+
+cv2.waitKey (0)
+
+cv2.destroyAllWindows ()
+
+"""
+import cv2
 import matplotlib.pyplot as plt
 
 image2 = cv2.imread("trial.jpg")
@@ -12,6 +42,7 @@ print('Faces found: ', len(faces))
 for (x, y, w, h) in faces:
     cv2.rectangle(image2, (x, y), (x+w, y+h), (0, 255, 0), 2)
 plt.imshow(image2)
+"""
 
 """
 path = 'CASPEAL/CASPEAL/CASPEAL_crop2'
