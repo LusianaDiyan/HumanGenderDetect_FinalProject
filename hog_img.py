@@ -6,7 +6,7 @@ from skimage.feature import hog
 from skimage import data, exposure
 
 #image = data.astronaut()
-image = face_recognition.load_image_file("trial.jpg")
+image = face_recognition.load_image_file("woman7.jpg")
 
 #creating hog feature
 fd, hog_image = hog(image, orientations=8, pixels_per_cell=(16, 16),
